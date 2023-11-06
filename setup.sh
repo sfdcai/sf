@@ -256,20 +256,7 @@ fi
 
 # install pihole if it has not been installed
 if ! type "pihole" > /dev/null; then
-	curl -sSL https://install.pi-hole.net | bash
-fi
-
-# use client configurations to determine if this is the first run, and apply preferred initial configurations
-if [[ ! $(ls -A wg0-client* 2>/dev/null) ]]; then
-	pihole -a -i local
-
-	# instructions
-	printf "\n\n\n\n\n\n"
-	echo -e "\e[2mPIHOLE CONFIGURATION"
-	echo -e "\e[0mSet the Admin Password for your Pi-Hole Interface"
-	printf "\n\n"
-
-	pihole -a -p
+	curl -sSL https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | bash
 fi
 
 addClient
